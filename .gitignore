@@ -1,0 +1,6 @@
+.vs_code
+.idea
+.DS_STORE
+
+run.log
+venv/
