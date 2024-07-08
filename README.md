@@ -2,6 +2,8 @@ A [Cosmicsting POC](https://github.com/Chocapikk/CVE-2024-34102), with a bash sc
 
 This repository is provided to allow store owners / hosts to confirm the patch is applied on stores. Within `check.bash` add domains to the `SITES` list.
 
+[https://www.sdj.pw/posts/magento2-cosmic-sting-check/](https://www.sdj.pw/posts/magento2-cosmic-sting-check/)
+
 ## Usage
 ```sh
 # Create a python vitual environment for the project
