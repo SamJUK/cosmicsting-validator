@@ -4,6 +4,8 @@ This repository is provided to allow store owners / hosts to confirm the patch i
 
 [https://www.sdj.pw/posts/magento2-cosmic-sting-check/](https://www.sdj.pw/posts/magento2-cosmic-sting-check/)
 
+[https://cosmicsting.samdjames.uk/](Online Validator https://cosmicsting.samdjames.uk/)
+
 ## Usage
 ```sh
 # Create a python vitual environment for the project
