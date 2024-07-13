@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+mkdir -p var/scripts
+
+echo "Url Input: $1"
+[[ -z "$1" || ! -f "$1" ]] && echo "[!] Err: Please provide a filepath to the urls" && exit 255
+
+for site in $(cat $1); do
+  FN="var/scripts/$(echo "$site" | md5).txt"
+  TMP=$(mktemp)
+  ./scripts.py $site | tee -a $TMP
+
+  diff $FN $TMP
+
+  if [ "$?" != "0" ]; then
+      echo -e "\033[41m\033[1;37m[!!!!] CHANGE DETECTED\033[0m"
+      # cat $TMP | mail -s "CosmicSting Monitor - Change Detected: $site" example@example.com
+  fi
+
+  rm -f $FN
+  mv $TMP $FN
+  echo ""
+  echo ""
+done
