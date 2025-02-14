@@ -4,25 +4,32 @@ This repository is provided to allow store owners / hosts to confirm the patch i
 
 [https://www.sdj.pw/posts/magento2-cosmic-sting-check/](https://www.sdj.pw/posts/magento2-cosmic-sting-check/)
 
-[https://cosmicsting.samdjames.uk/](Online Validator https://cosmicsting.samdjames.uk/)
+[Online Validator https://cosmicsting.samdjames.uk/](https://cosmicsting.samdjames.uk/)
+
+## Setup
+```sh
+# Create a python virtual environment for the project
+python -m venv venv
+
+# Activate virtual environment (pick appropriate below)
+source venv/bin/activate # MacOS / Unix
+venv\Scripts\activate    # Windows
+
+# Install Requirements
+pip install -r requirements.txt
+```
 
 ## Usage
 ```sh
-# Create a python vitual environment for the project
-python -m venv venv
-
-# Install the requirements
-pip install -r requirements.txt
-
-# Run the bulk validator script
-./z_validate sites/example.txt
-./z_validate sites/acme.txt
-
-# Run the POC against a single URL
+# Run the POC against a single store
 ./poc.py -u https://samdjames.uk
 
-# For unpatched sites, run a very BASIC compromised check (dump script srcs)
-# And run a diff against old detected scripts each execution
+# To run the POC against multiple stores, first create txt file containing the list of sites seperated by a new line
+# for example `sites/example.txt`. And pass it as the first positional argument of the ./z_validate script.
+./z_validate sites/example.txt
+
+# A very basic check monitoring stores for compromise
+# Dumps all script src's to a file, and compares against the previous run.
 ./z_compromise_check sites/example.txt
 ```
 
